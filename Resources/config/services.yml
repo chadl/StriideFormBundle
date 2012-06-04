@@ -1,0 +1,16 @@
+
+parameters:
+services:
+  striide_form.twig.form.validator.extension:
+    class: Striide\FormBundle\Extension\FormValidatorTwigExtension
+    calls:
+      - [setFormValidatorFactory,[@striide_form.formvalidator.factory]]
+    tags:
+      - { name: twig.extension }
+      
+  # jquery form validator
+  striide_form.formvalidator.factory:
+    class: Striide\FormBundle\Validator\FormValidatorFactory
+    calls:
+      - [setTranslator,[@translator]]
+      - [setMetaDataFactory,[@validator.mapping.class_metadata_factory]]
