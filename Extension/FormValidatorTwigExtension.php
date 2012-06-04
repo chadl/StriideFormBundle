@@ -6,14 +6,14 @@ use Symfony\Component\Validator\Constraints\Collection;
 class FormValidatorTwigExtension extends \Twig_Extension
 {
   private $form_validator_factory = null;
-  public function setFormValidatorFactory($service) 
+  public function setFormValidatorFactory($service)
   {
     $this->form_validator_factory = $service;
   }
   /**
    * {@inheritdoc}
    */
-  public function getFunctions() 
+  public function getFunctions()
   {
     return array(
       'js_validation' => new \Twig_Function_Method($this, 'jquery_validate_outputter') ,
@@ -22,7 +22,7 @@ class FormValidatorTwigExtension extends \Twig_Extension
       'getLocales' => new \Twig_Function_Method($this, 'getLocales') ,
     );
   }
-  public function jquery_validate_outputter($form_css_class, Form $form, Collection $validators) 
+  public function jquery_validate_outputter($form_css_class, Form $form, Collection $validators)
   {
     $messages = $this->form_validator_factory->getMessages($form, $validators);
     $rules = $this->form_validator_factory->getRules($form, $validators);
@@ -71,15 +71,15 @@ class FormValidatorTwigExtension extends \Twig_Extension
 ';
     return $output;
   }
-  public function getCountries() 
+  public function getCountries()
   {
     return json_encode(\Symfony\Component\Locale\Locale::getCountries());
   }
-  public function getLanguages() 
+  public function getLanguages()
   {
     return json_encode(\Symfony\Component\Locale\Locale::getLanguages());
   }
-  public function getLocales() 
+  public function getLocales()
   {
     return json_encode(\Symfony\Component\Locale\Locale::getLocales());
   }
@@ -88,7 +88,7 @@ class FormValidatorTwigExtension extends \Twig_Extension
    *
    * @return string The extension name
    */
-  public function getName() 
+  public function getName()
   {
     return 'FormValidatorTwigExtension';
   }
