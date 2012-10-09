@@ -20,5 +20,5 @@
 			"Striide\\FormBundle": ""
 		}
 	},
-	"target-dir": "Striide/FormBundle/StriideFormBundle"
+	"target-dir": "Striide/FormBundle"
 }
